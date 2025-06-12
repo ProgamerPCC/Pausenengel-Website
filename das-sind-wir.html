@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Das sind WIR! | Pausenengel</title>
+  <link rel="icon" href="https://www.gesamtschule-windeck.de/wp-content/uploads/2022/09/Logo-Gesamtschule-Windeck200px.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f8fc;
+      color: #222;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 50px;
+      border-radius: 8px;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.3rem 0.7rem;
+      transition: background 0.3s;
+    }
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      color: #0077cc;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 1000px;
+      margin: 2rem auto 3rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 1.5rem 1.5rem 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      color: #0077cc;
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+    .card p {
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #ddd;
+      background-color: #f9fafb;
+      border-radius: 16px 16px 0 0;
+      margin-top: auto;
+    }
+    button#modeToggle {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 999;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: none;
+      background: #0077cc;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.9;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 119, 204, 0.6);
+      transition: background-color 0.3s;
+    }
+    button#modeToggle:hover {
+      background-color: #005fa3;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+    .dark-mode header {
+      background-color: #222;
+      color: #ddd;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode nav a {
+      color: #ccc;
+    }
+    .dark-mode nav a:hover,
+    .dark-mode nav a[aria-current="page"] {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .dark-mode main {
+      background: none;
+    }
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      color: #eee;
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode footer {
+      color: #aaa;
+      border-top: 1px solid #333;
+      background-color: #181818;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img
+        src="https://www.gesamtschule-windeck.de/wp-content/uploads/2022/09/Logo-Gesamtschule-Windeck200px.png"
+        alt="Schullogo"
+      />
+      <h1 style="margin-left: 0.5rem; font-size: 1.5rem">Pausenengel</h1>
+    </div>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="das-sind-wir.html">Das sind WIR!</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Unser Team</h1>
+    <p>Wir Pausenengel der Gesamtschule Windeck stellen uns vor.</p>
+  </section>
+
+  <main>
+    <article class="card" tabindex="0" aria-label="Pausenengel Krokooo">
+      <h3>Krokooo</h3>
+      <p>Ich bin Pausenengel, weil ich helfen will und Streit schlichten möchte.</p>
+    </article>
+
+    <article class="card" tabindex="0" aria-label="Pausenengel Max">
+      <h3>Max</h3>
+      <p>Ich sorge dafür, dass sich alle wohlfühlen und unterstütze bei Problemen.</p>
+    </article>
+
+    <article class="card" tabindex="0" aria-label="Pausenengel Max Mustermann">
+      <h3>Max Mustermann</h3>
+      <p>Ich helfe neuen Schüler*innen, sich an der Schule zurechtzufinden.</p>
+    </article>
+
+    <!-- Hier kannst du weitere Pausenengel ergänzen -->
+  </main>
+
+  <footer>
+    &copy; 2025 Pausenengel | Gesamtschule Windeck
+  </footer>
+
+  <button id="modeToggle" aria-label="Dark Mode umschalten">🌙 Dark Mode</button>
+
+  <script>
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+      );
+    });
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>

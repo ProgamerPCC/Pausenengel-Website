@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pausenengel | Gesamtschule Windeck</title>
+  <link rel="icon" href="https://www.gesamtschule-windeck.de/wp-content/uploads/2022/09/Logo-Gesamtschule-Windeck200px.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #222;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #0077cc;
+      color: #fff;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 50px;
+      border-radius: 8px;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 0.3rem 0.7rem;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      animation: fadeIn 2s ease;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #0077cc;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .hero p {
+      font-size: 1.4rem;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .info-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      line-height: 1.6;
+      color: #333;
+      animation: fadeIn 2s ease;
+    }
+    .info-section h2 {
+      margin-bottom: 1rem;
+      color: #0077cc;
+      border-left: 6px solid #0077cc;
+      padding-left: 0.7rem;
+    }
+    .info-section p {
+      margin-bottom: 1rem;
+    }
+    .info-section ul {
+      margin-left: 1.2rem;
+      margin-bottom: 1rem;
+      list-style-type: disc;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+      border-top: 1px solid #ddd;
+    }
+
+    button#modeToggle {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 999;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: none;
+      background: #0077cc;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.9;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 119, 204, 0.6);
+      transition: background-color 0.3s;
+    }
+    button#modeToggle:hover {
+      background-color: #005fa3;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #121212;
+      color: #f4f4f4;
+    }
+    .dark-mode .info-section {
+      background: #1e1e1e;
+      color: #eee;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode header {
+      background-color: #222;
+      color: #ddd;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode nav a {
+      color: #ccc;
+    }
+    .dark-mode nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .dark-mode footer {
+      color: #aaa;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img
+        src="https://www.gesamtschule-windeck.de/wp-content/uploads/2022/09/Logo-Gesamtschule-Windeck200px.png"
+        alt="Schullogo"
+      />
+      <h1 style="margin-left: 0.5rem; font-size: 1.5rem">Pausenengel</h1>
+    </div>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="das-sind-wir.html">Das sind WIR!</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Herzlich Willkommen bei den Pausenengeln!</h1>
+    <p>
+      Wir Pausenengel sind da, um in den Pausen für eine friedliche und
+      freundliche Atmosphäre an der Gesamtschule Windeck zu sorgen.
+    </p>
+  </section>
+
+  <section class="info-section">
+    <h2>Unsere Mission</h2>
+    <p>
+      Streit schlichten, zuhören, helfen – das ist unsere Aufgabe. Wir wollen,
+      dass sich alle Schülerinnen und Schüler in den Pausen wohlfühlen und
+      sicher sind.
+    </p>
+  </section>
+
+  <section class="info-section">
+    <h2>Was machen wir?</h2>
+    <ul>
+      <li>Streitfälle friedlich lösen</li>
+      <li>Bei Problemen und Sorgen ein offenes Ohr bieten</li>
+      <li>Für eine freundliche und respektvolle Stimmung sorgen</li>
+      <li>Gemeinsam mit Lehrerinnen und Lehrern Projekte planen</li>
+      <li>Spielgeräte und Aktivitäten in den Pausen organisieren</li>
+      <li>Neue Schülerinnen und Schüler unterstützen und begrüßen</li>
+    </ul>
+  </section>
+
+  <section class="info-section">
+    <h2>Wie wirst du Pausenengel?</h2>
+    <p>
+      Wenn du anderen helfen möchtest und Interesse hast, Pausenengel zu
+      werden, melde dich ab dem 6. Schuljahr bei uns! Wir suchen
+      engagierte Schülerinnen und Schüler, die Spaß daran haben, anderen zu
+      Helfen und Verantwortung zu übernehmen. Gemeinsam bilden wir ein starkes
+      Team, das die Schulgemeinschaft unterstützt und stärkt.
+    </p>
+  </section>
+
+  <section class="info-section">
+    <h2>Warum sind Pausenengel wichtig?</h2>
+    <p>
+      Pausen sind eine wichtige Zeit zum Auftanken und Freunde treffen. Mit
+      Pausenengeln fühlen sich alle sicherer und lernen, respektvoll miteinander
+      umzugehen. So wird die Schule zu einem Ort, an dem alle gern sind.
+    </p>
+  </section>
+
+  <section class="info-section">
+    <h2>Kontakt</h2>
+    <p>
+      Du hast Fragen oder möchtest mitmachen? Schreib uns eine E-Mail an
+      <a href="mailto:fragen@pausenengel-windeck.de"
+        >fragen@pausenengel-windeck.de</a
+      >
+      oder sprich uns einfach in der Schule an.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Pausenengel | Gesamtschule Windeck
+  </footer>
+
+  <button id="modeToggle" aria-label="Dark Mode umschalten">🌙 Dark Mode</button>
+
+  <script>
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem(
+        'darkMode',
+        document.body.classList.contains('dark-mode')
+      );
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>

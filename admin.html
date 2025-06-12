@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Bereich</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --background: #f9f9f9;
+      --card-bg: #ffffff;
+      --accent: #f97316;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: var(--background);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    #logout {
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      gap: 2rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    input, textarea, button {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-top: 0.5rem;
+      background: #f1f5f9;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .delete-btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      margin-top: 0.3rem;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Bereich</h1>
+    <button id="logout">Logout</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Neuen Benutzer hinzufügen</h2>
+      <input type="text" id="newUser" placeholder="Benutzername" />
+      <input type="password" id="newPass" placeholder="Passwort" />
+      <button id="addUserBtn">Benutzer hinzufügen</button>
+      <h3>Benutzerliste:</h3>
+      <ul id="users"></ul>
+    </section>
+
+    <section>
+      <h2>Neuen Blogbeitrag erstellen</h2>
+      <input type="text" id="postTitle" placeholder="Titel" />
+      <textarea id="postContent" placeholder="Beitragstext"></textarea>
+      <button id="addPostBtn">Beitrag speichern</button>
+    </section>
+
+    <section>
+      <h2>Beiträge verwalten</h2>
+      <ul id="postList"></ul>
+    </section>
+  </main>
+
+  <script>
+    if (sessionStorage.getItem("loggedInUser") !== "Pausenengel-Neel") {
+      alert("Kein Zugriff! Bitte erst einloggen.");
+      window.location.href = "blog-login.html";
+    }
+
+    const users = JSON.parse(localStorage.getItem('users')) || [
+      { user: "Pausenengel-Neel", pass: "Mini2012." },
+    ];
+
+    const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+
+    const userList = document.getElementById('users');
+    const postList = document.getElementById('postList');
+
+    function renderUsers() {
+      userList.innerHTML = '';
+      users.forEach(u => {
+        const li = document.createElement('li');
+        li.textContent = `${u.user} (PW: ${u.pass})`;
+        userList.appendChild(li);
+      });
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    function renderPosts() {
+      postList.innerHTML = '';
+      posts.forEach((p, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${p.title}</strong> (${p.date})<br>${p.content}
+          <br><button class="delete-btn" onclick="deletePost(${i})">Löschen</button>
+        `;
+        postList.appendChild(li);
+      });
+    }
+
+    function deletePost(index) {
+      if (confirm("Beitrag wirklich löschen?")) {
+        posts.splice(index, 1);
+        localStorage.setItem('blogPosts', JSON.stringify(posts));
+        renderPosts();
+      }
+    }
+
+    document.getElementById('addUserBtn').onclick = () => {
+      const user = document.getElementById('newUser').value.trim();
+      const pass = document.getElementById('newPass').value;
+      if (!user || !pass) return alert("Bitte alle Felder ausfüllen!");
+      if (users.find(u => u.user === user)) return alert("Benutzer existiert bereits!");
+      users.push({ user, pass });
+      localStorage.setItem('users', JSON.stringify(users));
+      renderUsers();
+      document.getElementById('newUser').value = "";
+      document.getElementById('newPass').value = "";
+    };
+
+    document.getElementById('addPostBtn').onclick = () => {
+      const title = document.getElementById('postTitle').value.trim();
+      const content = document.getElementById('postContent').value.trim();
+      if (!title || !content) return alert("Bitte Titel & Inhalt angeben!");
+      posts.unshift({ title, content, date: new Date().toLocaleDateString() });
+      localStorage.setItem('blogPosts', JSON.stringify(posts));
+      document.getElementById('postTitle').value = "";
+      document.getElementById('postContent').value = "";
+      renderPosts();
+    };
+
+    document.getElementById('logout').onclick = () => {
+      sessionStorage.removeItem("loggedInUser");
+      window.location.href = "blog-login.html";
+    };
+
+    renderUsers();
+    renderPosts();
+  </script>
+</body>
+</html>
